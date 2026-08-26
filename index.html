@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conecta Relações Humanas</title>
+<meta name="description" content="Conecta Relações Humanas — consultoria e cuidado sob a mesma marca.">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #12293B;
+    padding: 24px;
+  }
+</style>
+</head>
+<body>
+<style>
+  .cvi-root {
+    --areia: #F5F2EB;
+    --areia-escura: #EAE4D6;
+    --ouro: #C9A26B;
+    --ouro-claro: #DDBB8C;
+    --azul: #1A364B;
+    --azul-fundo: #12293B;
+    --terracota: #C05C3B;
+    --tinta: #2E2A24;
+    --branco: #FFFFFF;
+    font-family: 'Segoe UI', Calibri, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .cvi-root * { box-sizing: border-box; }
+
+  .cvi-stage {
+    position: relative;
+    width: min(100%, 960px);
+    aspect-ratio: 16 / 9;
+    background: var(--areia);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(26,54,75,0.18);
+  }
+
+  .cvi-scene {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(16px, 5%, 56px);
+  }
+  .cvi-scene.cvi-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cvi-eyebrow {
+    font-size: clamp(10px, 1.6vw, 14px);
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    margin-bottom: clamp(6px, 1.5%, 14px);
+  }
+  .cvi-headline {
+    font-family: Georgia, 'Cambria', serif;
+    font-size: clamp(18px, 4.2vw, 40px);
+    font-weight: 700;
+    line-height: 1.25;
+    max-width: 90%;
+    margin: 0 0 clamp(6px, 1.5%, 16px) 0;
+  }
+  .cvi-sub {
+    font-size: clamp(11px, 1.8vw, 17px);
+    line-height: 1.5;
+    max-width: 80%;
+    opacity: 0.92;
+  }
+
+  /* ---- Scene 1: Abertura ---- */
+  #cvi-s1 { background: linear-gradient(160deg, var(--azul) 0%, var(--azul-fundo) 100%); }
+  .cvi-pebbles-open { position: relative; width: clamp(90px,18vw,170px); height: clamp(60px,12vw,110px); margin-bottom: clamp(10px,2.5%,22px); }
+  .cvi-pebble { position: absolute; border-radius: 60% 55% 65% 50% / 55% 60% 45% 60%; }
+  .cvi-pebble-a {
+    width: 62%; height: 78%; left: 0; top: 10%;
+    background: var(--ouro-claro);
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: cvi-drift-in-l 1.4s ease-out 0.3s forwards;
+  }
+  .cvi-pebble-b {
+    width: 58%; height: 72%; right: 0; top: 0;
+    background: var(--terracota);
+    opacity: 0;
+    transform: translateX(40px);
+    animation: cvi-drift-in-r 1.4s ease-out 0.3s forwards;
+    mix-blend-mode: multiply;
+  }
+  @keyframes cvi-drift-in-l { to { opacity: 0.92; transform: translateX(0); } }
+  @keyframes cvi-drift-in-r { to { opacity: 0.92; transform: translateX(0); } }
+  .cvi-word {
+    font-family: Georgia, 'Cambria', serif;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-size: clamp(22px, 5.5vw, 46px);
+    color: var(--areia);
+    opacity: 0;
+    animation: cvi-fade-up 0.9s ease-out 1.5s forwards;
+  }
+  .cvi-tagline-open {
+    color: var(--ouro-claro);
+    letter-spacing: 0.24em;
+    font-size: clamp(9px, 1.6vw, 14px);
+    margin-top: clamp(6px, 1.5%, 12px);
+    opacity: 0;
+    animation: cvi-fade-up 0.9s ease-out 2.1s forwards;
+  }
+  @keyframes cvi-fade-up { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+
+  /* ---- Scene 2: Conceito ---- */
+  #cvi-s2 { background: var(--areia); color: var(--azul); }
+  .cvi-stone-wrap { position: relative; width: clamp(60px,10vw,90px); height: clamp(44px,7vw,66px); margin-bottom: clamp(14px,3%,26px); }
+  .cvi-stone {
+    position: absolute; inset: 0;
+    background: var(--terracota);
+    border-radius: 60% 55% 65% 50% / 55% 60% 45% 60%;
+    z-index: 2;
+    animation: cvi-bob 3s ease-in-out infinite;
+  }
+  @keyframes cvi-bob { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-4px);} }
+  .cvi-ripple {
+    position: absolute; left: 50%; bottom: -6px;
+    width: 20px; height: 20px; margin-left: -10px;
+    border: 1.5px solid var(--ouro);
+    border-radius: 50%;
+    opacity: 0;
+    animation: cvi-ripple-out 2.6s ease-out infinite;
+  }
+  .cvi-ripple.cvi-r2 { animation-delay: 0.9s; }
+  .cvi-ripple.cvi-r3 { animation-delay: 1.8s; }
+  @keyframes cvi-ripple-out {
+    0% { width: 16px; height: 8px; margin-left: -8px; opacity: 0.7; }
+    100% { width: 140px; height: 60px; margin-left: -70px; opacity: 0; }
+  }
+  #cvi-s2 .cvi-headline { color: var(--azul); }
+  #cvi-s2 .cvi-sub { color: var(--tinta); }
+
+  /* ---- Scene 3: B2B ---- */
+  #cvi-s3 { background: var(--azul); color: var(--areia); }
+  #cvi-s3 .cvi-eyebrow { color: var(--ouro-claro); }
+  #cvi-s3 .cvi-headline { color: var(--areia); max-width: 85%; }
+  .cvi-list { display: flex; flex-direction: column; gap: clamp(6px,1.6%,12px); margin-top: clamp(10px,2%,18px); width: 88%; max-width: 480px; }
+  .cvi-item {
+    background: rgba(245,242,235,0.08);
+    border: 1px solid rgba(201,162,107,0.35);
+    border-radius: 8px;
+    padding: clamp(6px,1.4%,12px) clamp(10px,2%,16px);
+    font-size: clamp(10px,1.7vw,15px);
+    text-align: left;
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  .cvi-active .cvi-item:nth-child(1) { animation: cvi-slide-in 0.6s ease-out 0.4s forwards; }
+  .cvi-active .cvi-item:nth-child(2) { animation: cvi-slide-in 0.6s ease-out 1.0s forwards; }
+  .cvi-active .cvi-item:nth-child(3) { animation: cvi-slide-in 0.6s ease-out 1.6s forwards; }
+  @keyframes cvi-slide-in { to { opacity: 1; transform: translateX(0); } }
+
+  /* ---- Scene 4: B2C ---- */
+  #cvi-s4 { background: var(--areia-escura); color: var(--azul); }
+  #cvi-s4 .cvi-eyebrow { color: var(--terracota); }
+  #cvi-s4 .cvi-headline { color: var(--azul); }
+  #cvi-s4 .cvi-item { background: var(--branco); border: 1px solid rgba(192,92,59,0.3); color: var(--tinta); }
+
+  /* ---- Scene 5: Como funciona ---- */
+  #cvi-s5 { background: var(--areia); color: var(--azul); }
+  .cvi-steps { display: flex; gap: clamp(8px,2%,20px); margin-top: clamp(10px,2%,18px); width: 92%; max-width: 640px; justify-content: center; }
+  .cvi-step {
+    flex: 1; background: var(--branco); border-radius: 8px;
+    padding: clamp(8px,2%,16px) clamp(6px,1.5%,12px);
+    opacity: 0; transform: translateY(12px);
+    border-top: 3px solid var(--ouro);
+  }
+  .cvi-active .cvi-step:nth-child(1) { animation: cvi-rise-in 0.6s ease-out 0.4s forwards; }
+  .cvi-active .cvi-step:nth-child(2) { animation: cvi-rise-in 0.6s ease-out 1.1s forwards; }
+  .cvi-active .cvi-step:nth-child(3) { animation: cvi-rise-in 0.6s ease-out 1.8s forwards; }
+  @keyframes cvi-rise-in { to { opacity: 1; transform: translateY(0);} }
+  .cvi-step-num { font-family: Georgia, serif; color: var(--ouro); font-weight: 700; font-size: clamp(14px,2.6vw,22px); }
+  .cvi-step-title { font-weight: 700; font-size: clamp(9px,1.5vw,14px); color: var(--azul); margin: 4px 0; }
+  .cvi-step-desc { font-size: clamp(7.5px,1.3vw,11.5px); color: var(--tinta); line-height: 1.35; }
+
+  /* ---- Scene 6: Diferencial ---- */
+  #cvi-s6 { background: var(--azul); color: var(--areia); }
+  #cvi-s6 .cvi-eyebrow { color: var(--ouro-claro); }
+  #cvi-s6 .cvi-headline { color: var(--areia); }
+  #cvi-s6 .cvi-sub { color: var(--areia-escura); }
+
+  /* ---- Scene 7: Encerramento ---- */
+  #cvi-s7 { background: linear-gradient(160deg, var(--azul-fundo) 0%, var(--azul) 100%); }
+  .cvi-close-mark { width: clamp(34px,6vw,52px); height: clamp(34px,6vw,52px); position: relative; margin-bottom: clamp(8px,2%,14px); }
+  .cvi-close-mark .cvi-pebble-a, .cvi-close-mark .cvi-pebble-b { opacity: 0.92; animation: none; transform: none; }
+  .cvi-close-mark .cvi-pebble-a { width: 60%; height: 78%; left: 0; top: 10%; background: var(--ouro-claro); }
+  .cvi-close-mark .cvi-pebble-b { width: 56%; height: 70%; right: 0; top: 0; background: var(--terracota); mix-blend-mode: multiply; }
+  #cvi-s7 .cvi-word { animation: none; opacity: 1; font-size: clamp(18px,4vw,32px); }
+  #cvi-s7 .cvi-cta {
+    margin-top: clamp(10px,2.4%,20px);
+    color: var(--areia);
+    font-size: clamp(11px,1.9vw,16px);
+    border: 1px solid var(--ouro);
+    border-radius: 20px;
+    padding: clamp(6px,1.4%,10px) clamp(16px,3%,26px);
+  }
+  #cvi-s7 .cvi-handle {
+    margin-top: clamp(8px,1.8%,14px);
+    color: var(--ouro-claro);
+    font-size: clamp(9px,1.5vw,13px);
+    letter-spacing: 0.08em;
+  }
+
+  /* ---- Watermark pebbles, persists corner ---- */
+  .cvi-watermark {
+    position: absolute; bottom: 10px; right: 12px;
+    width: 22px; height: 16px; opacity: 0.16; z-index: 5;
+  }
+  .cvi-watermark .cvi-pebble { position: absolute; }
+  .cvi-watermark .cvi-pebble-a { width: 62%; height: 78%; left: 0; top: 10%; background: var(--azul); }
+  .cvi-watermark .cvi-pebble-b { width: 58%; height: 72%; right: 0; top: 0; background: var(--terracota); }
+
+  /* ---- Caption bar ---- */
+  .cvi-caption-bar {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.28), transparent);
+    padding: 10px 14px 8px;
+    text-align: center;
+    pointer-events: none;
+  }
+  .cvi-caption-text {
+    color: var(--branco);
+    font-size: clamp(8px, 1.3vw, 11px);
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    opacity: 0.88;
+  }
+
+  /* ---- Progress + controls ---- */
+  .cvi-progress-row {
+    display: flex;
+    gap: 5px;
+    width: min(100%, 960px);
+    padding: 0 2px;
+  }
+  .cvi-progress-seg {
+    flex: 1;
+    height: 4px;
+    background: var(--areia-escura);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .cvi-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--ouro);
+    border-radius: 2px;
+  }
+  .cvi-progress-seg.cvi-done .cvi-progress-fill { width: 100%; background: var(--terracota); }
+
+  .cvi-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cvi-btn {
+    background: var(--azul);
+    color: var(--areia);
+    border: none;
+    border-radius: 20px;
+    padding: 7px 18px;
+    font-size: 12.5px;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+  }
+  .cvi-btn:hover { background: var(--azul-fundo); }
+  .cvi-btn.cvi-secondary {
+    background: transparent;
+    color: var(--azul);
+    border: 1px solid var(--ouro);
+  }
+  .cvi-scene-label {
+    font-size: 11px;
+    color: var(--tinta);
+    letter-spacing: 0.06em;
+    opacity: 0.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cvi-pebble-a, .cvi-pebble-b, .cvi-word, .cvi-tagline-open, .cvi-item, .cvi-step, .cvi-stone, .cvi-ripple {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<div class="cvi-root">
+  <div class="cvi-stage" id="cvi-stage">
+
+    <div class="cvi-scene cvi-active" id="cvi-s1">
+      <div class="cvi-pebbles-open">
+        <div class="cvi-pebble cvi-pebble-a"></div>
+        <div class="cvi-pebble cvi-pebble-b"></div>
+      </div>
+      <div class="cvi-word">CONECTA</div>
+      <div class="cvi-tagline-open">PESSOAS &nbsp;·&nbsp; PROPÓSITO &nbsp;·&nbsp; CAMINHOS</div>
+      <div class="cvi-caption-bar"><div class="cvi-caption-text">Relações Humanas — consultoria e cuidado sob a mesma marca.</div></div>
+    </div>
+
+    <div class="cvi-scene" id="cvi-s2">
+      <div class="cvi-stone-wrap">
+        <div class="cvi-stone"></div>
+        <div class="cvi-ripple cvi-r1"></div>
+        <div class="cvi-ripple cvi-r2"></div>
+        <div class="cvi-ripple cvi-r3"></div>
+      </div>
+      <div class="cvi-headline">A pedra é lapidada pela água.</div>
+      <div class="cvi-sub">Solidez estratégica que existe em razão do cuidado humano — não apesar dele.</div>
+      <div class="cvi-caption-bar"><div class="cvi-caption-text" style="color:#2E2A24; opacity:0.6;">O conceito que une as duas frentes da Conecta.</div></div>
+    </div>
+
+    <div class="cvi-scene" id="cvi-s3">
+      <div class="cvi-eyebrow">PARA EMPRESAS</div>
+      <div class="cvi-headline">Consultoria com raiz em 20 anos de RH corporativo</div>
+      <div class="cvi-list">
+        <div class="cvi-item">Consultoria Organizacional e Governança Corporativa</div>
+        <div class="cvi-item">Recrutamento e Seleção</div>
+        <div class="cvi-item">Desenvolvimento Organizacional e BPO de RH</div>
+      </div>
+      <div class="cvi-caption-bar"><div class="cvi-caption-text">Frente institucional — Conecta Relações Humanas.</div></div>
+    </div>
+
+    <div class="cvi-scene" id="cvi-s4">
+      <div class="cvi-eyebrow">PARA PESSOAS</div>
+      <div class="cvi-headline">Escuta real, sem fórmulas prontas</div>
+      <div class="cvi-list">
+        <div class="cvi-item">Terapia — Reprogramação Emocional</div>
+        <div class="cvi-item">Terapia — ABA (Análise do Comportamento Aplicada)</div>
+        <div class="cvi-item">Mentoria de Carreira</div>
+      </div>
+      <div class="cvi-caption-bar"><div class="cvi-caption-text" style="color:#2E2A24; opacity:0.6;">Frente pessoal — Alane Lima.</div></div>
+    </div>
+
+    <div class="cvi-scene" id="cvi-s5">
+      <div class="cvi-eyebrow" style="color:#C05C3B;">COMO FUNCIONA</div>
+      <div class="cvi-headline">Uma jornada, não uma fórmula pronta</div>
+      <div class="cvi-steps">
+        <div class="cvi-step">
+          <div class="cvi-step-num">01</div>
+          <div class="cvi-step-title">Escuta e diagnóstico</div>
+          <div class="cvi-step-desc">Entendemos o momento real, sem pressupor soluções.</div>
+        </div>
+        <div class="cvi-step">
+          <div class="cvi-step-num">02</div>
+          <div class="cvi-step-title">Plano personalizado</div>
+          <div class="cvi-step-desc">Construímos um caminho sob medida.</div>
+        </div>
+        <div class="cvi-step">
+          <div class="cvi-step-num">03</div>
+          <div class="cvi-step-title">Acompanhamento contínuo</div>
+          <div class="cvi-step-desc">Seguimos até o resultado se sustentar.</div>
+        </div>
+      </div>
+      <div class="cvi-caption-bar"><div class="cvi-caption-text" style="color:#2E2A24; opacity:0.6;">O mesmo método, corporativo ou individual.</div></div>
+    </div>
+
+    <div class="cvi-scene" id="cvi-s6">
+      <div class="cvi-eyebrow">DIFERENCIAL</div>
+      <div class="cvi-headline">Estratégia com raiz humana</div>
+      <div class="cvi-sub">Cada entrega da Conecta integra fundamentos humanos reais com ferramentas modernas de gestão — o resultado nasce de uma escuta genuína, não de um modelo padronizado.</div>
+      <div class="cvi-caption-bar"><div class="cvi-caption-text">Por que a Conecta é diferente.</div></div>
+    </div>
+
+    <div class="cvi-scene" id="cvi-s7">
+      <div class="cvi-close-mark">
+        <div class="cvi-pebble cvi-pebble-a"></div>
+        <div class="cvi-pebble cvi-pebble-b"></div>
+      </div>
+      <div class="cvi-word">CONECTA</div>
+      <div class="cvi-cta">Vamos conversar.</div>
+      <div class="cvi-handle">@ConectaRelacoesHumanas</div>
+    </div>
+
+    <div class="cvi-watermark">
+      <div class="cvi-pebble cvi-pebble-a"></div>
+      <div class="cvi-pebble cvi-pebble-b"></div>
+    </div>
+
+  </div>
+
+  <div class="cvi-progress-row" id="cvi-progress-row"></div>
+
+  <div class="cvi-controls">
+    <button class="cvi-btn" id="cvi-play-btn">Pausar</button>
+    <button class="cvi-btn cvi-secondary" id="cvi-restart-btn">Reiniciar</button>
+    <span class="cvi-scene-label" id="cvi-scene-label">Cena 1 de 7</span>
+  </div>
+</div>
+
+<script>
+(function() {
+  var scenes = ["cvi-s1","cvi-s2","cvi-s3","cvi-s4","cvi-s5","cvi-s6","cvi-s7"];
+  var durations = [4200, 5200, 5200, 5200, 5200, 4200, 5000]; // ms per scene
+  var current = 0;
+  var playing = true;
+  var timer = null;
+  var segStart = null;
+  var remaining = durations[0];
+
+  var progressRow = document.getElementById('cvi-progress-row');
+  var segFills = [];
+  scenes.forEach(function(_, i) {
+    var seg = document.createElement('div');
+    seg.className = 'cvi-progress-seg';
+    var fill = document.createElement('div');
+    fill.className = 'cvi-progress-fill';
+    seg.appendChild(fill);
+    seg.addEventListener('click', function() { goToScene(i); });
+    progressRow.appendChild(seg);
+    segFills.push(fill);
+  });
+
+  var playBtn = document.getElementById('cvi-play-btn');
+  var restartBtn = document.getElementById('cvi-restart-btn');
+  var sceneLabel = document.getElementById('cvi-scene-label');
+
+  function showScene(i) {
+    scenes.forEach(function(id, idx) {
+      var el = document.getElementById(id);
+      if (idx === i) { el.classList.add('cvi-active'); }
+      else { el.classList.remove('cvi-active'); }
+    });
+    segFills.forEach(function(fill, idx) {
+      if (idx < i) {
+        fill.style.transition = 'none';
+        fill.style.width = '100%';
+      } else if (idx === i) {
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
+      } else {
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
+      }
+    });
+    sceneLabel.textContent = 'Cena ' + (i + 1) + ' de ' + scenes.length;
+  }
+
+  function animateFill(i, dur) {
+    var fill = segFills[i];
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    // force reflow
+    void fill.offsetWidth;
+    fill.style.transition = 'width ' + dur + 'ms linear';
+    fill.style.width = '100%';
+  }
+
+  function goToScene(i) {
+    clearTimeout(timer);
+    current = i;
+    remaining = durations[i];
+    showScene(current);
+    if (playing) {
+      animateFill(current, remaining);
+      scheduleNext(remaining);
+    }
+  }
+
+  function scheduleNext(ms) {
+    segStart = Date.now();
+    timer = setTimeout(function() {
+      current = (current + 1) % scenes.length;
+      remaining = durations[current];
+      showScene(current);
+      animateFill(current, remaining);
+      scheduleNext(remaining);
+    }, ms);
+  }
+
+  function pause() {
+    playing = false;
+    clearTimeout(timer);
+    var elapsed = Date.now() - segStart;
+    remaining = Math.max(200, remaining - elapsed);
+    var fill = segFills[current];
+    var computedWidth = getComputedStyle(fill).width;
+    fill.style.transition = 'none';
+    fill.style.width = computedWidth;
+    playBtn.textContent = 'Reproduzir';
+  }
+
+  function resume() {
+    playing = true;
+    playBtn.textContent = 'Pausar';
+    animateFillFrom(current, remaining);
+    scheduleNext(remaining);
+  }
+
+  function animateFillFrom(i, dur) {
+    var fill = segFills[i];
+    var startWidth = getComputedStyle(fill).width;
+    fill.style.transition = 'none';
+    void fill.offsetWidth;
+    fill.style.transition = 'width ' + dur + 'ms linear';
+    fill.style.width = '100%';
+  }
+
+  playBtn.addEventListener('click', function() {
+    if (playing) { pause(); } else { resume(); }
+  });
+
+  restartBtn.addEventListener('click', function() {
+    playing = true;
+    playBtn.textContent = 'Pausar';
+    goToScene(0);
+  });
+
+  // init
+  showScene(0);
+  animateFill(0, durations[0]);
+  scheduleNext(durations[0]);
+})();
+</script>
+
+</body>
+</html>
