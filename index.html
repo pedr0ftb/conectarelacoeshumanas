@@ -250,6 +250,38 @@
     font-size: clamp(9px,1.5vw,13px);
     letter-spacing: 0.08em;
   }
+  .cvi-contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px,2%,18px);
+    margin-top: clamp(10px,2.4%,20px);
+    flex-wrap: wrap;
+  }
+  .cvi-linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--areia);
+    text-decoration: none;
+    font-size: clamp(11px,1.9vw,16px);
+    border: 1px solid var(--ouro);
+    border-radius: 20px;
+    padding: clamp(6px,1.4%,10px) clamp(16px,3%,26px);
+    transition: background 0.2s ease;
+  }
+  .cvi-linkedin-btn:hover { background: rgba(201,162,107,0.15); }
+  .cvi-linkedin-btn svg { width: 16px; height: 16px; fill: var(--ouro-claro); flex-shrink: 0; }
+  .cvi-phone-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--ouro-claro);
+    text-decoration: none;
+    font-size: clamp(10px,1.7vw,14px);
+    letter-spacing: 0.02em;
+  }
+  .cvi-phone-chip svg { width: 15px; height: 15px; fill: var(--ouro-claro); flex-shrink: 0; }
 
   /* ---- Watermark pebbles, persists corner ---- */
   .cvi-watermark {
@@ -422,6 +454,16 @@
       <div class="cvi-word">CONECTA</div>
       <div class="cvi-cta">Vamos conversar.</div>
       <div class="cvi-handle">@ConectaRelacoesHumanas</div>
+      <div class="cvi-contact-row">
+        <a class="cvi-linkedin-btn" href="https://www.linkedin.com/in/conecta-alanelima/?locale=pt" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          Alane Lima — LinkedIn
+        </a>
+        <a class="cvi-phone-chip" href="tel:+5511966333092">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+          +55 11 96633-3092
+        </a>
+      </div>
     </div>
 
     <div class="cvi-watermark">
