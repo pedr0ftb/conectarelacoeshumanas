@@ -11,18 +11,11 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
     background: #12293B;
-  }
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .cvi-page-wrap {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,8 +28,164 @@
   }
   .cvi-page-wrap .cvi-stage {
     flex: 1;
-    aspect-ratio: unset;
+    aspect-ratio: 16 / 9;
     max-height: calc(100vh - 120px);
+  }
+
+  /* ===== Página: Terapia Holística ===== */
+  :root {
+    --th-areia: #F5F2EB;
+    --th-areia-escura: #EAE4D6;
+    --th-ouro: #C9A26B;
+    --th-ouro-claro: #DDBB8C;
+    --th-azul: #1A364B;
+    --th-azul-fundo: #12293B;
+    --th-terracota: #C05C3B;
+    --th-tinta: #2E2A24;
+    --th-branco: #FFFFFF;
+  }
+  .th-section {
+    width: 100%;
+    background: var(--th-areia);
+    font-family: 'Segoe UI', Calibri, -apple-system, sans-serif;
+    color: var(--th-tinta);
+  }
+  .th-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(48px, 8vw, 96px) 24px;
+  }
+  .th-hero {
+    background: linear-gradient(160deg, var(--th-azul) 0%, var(--th-azul-fundo) 100%);
+    color: var(--th-areia);
+    text-align: center;
+    padding: clamp(56px, 10vw, 110px) 24px clamp(48px, 8vw, 88px);
+  }
+  .th-eyebrow {
+    letter-spacing: 0.22em;
+    font-size: clamp(10px, 1.6vw, 13px);
+    font-weight: 600;
+    color: var(--th-ouro-claro);
+    margin-bottom: 14px;
+  }
+  .th-h1 {
+    font-family: Georgia, 'Cambria', serif;
+    font-weight: 700;
+    font-size: clamp(24px, 4.4vw, 44px);
+    line-height: 1.28;
+    max-width: 760px;
+    margin: 0 auto 18px;
+  }
+  .th-sub {
+    font-size: clamp(13px, 2vw, 18px);
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto;
+    opacity: 0.92;
+  }
+  .th-block { padding: clamp(36px, 6vw, 56px) 0; border-bottom: 1px solid var(--th-areia-escura); }
+  .th-block:last-child { border-bottom: none; }
+  .th-block.th-dark { background: var(--th-azul); color: var(--th-areia); border-bottom: none; }
+  .th-block.th-dark .th-inner { padding-top: clamp(40px,7vw,72px); padding-bottom: clamp(40px,7vw,72px); }
+  .th-kicker {
+    font-size: clamp(10px, 1.5vw, 12.5px);
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--th-terracota);
+    margin-bottom: 12px;
+  }
+  .th-dark .th-kicker { color: var(--th-ouro-claro); }
+  .th-h2 {
+    font-family: Georgia, 'Cambria', serif;
+    font-weight: 700;
+    font-size: clamp(19px, 3vw, 28px);
+    color: var(--th-azul);
+    margin: 0 0 16px;
+    line-height: 1.3;
+  }
+  .th-dark .th-h2 { color: var(--th-areia); }
+  .th-p {
+    font-size: clamp(13.5px, 1.8vw, 16px);
+    line-height: 1.75;
+    margin: 0 0 14px;
+    max-width: 720px;
+  }
+  .th-list {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .th-list li {
+    background: var(--th-branco);
+    border: 1px solid rgba(201,162,107,0.35);
+    border-left: 3px solid var(--th-ouro);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: clamp(13px, 1.7vw, 15px);
+    line-height: 1.5;
+  }
+  .th-dark .th-list li {
+    background: rgba(245,242,235,0.07);
+    color: var(--th-areia);
+    border-color: rgba(201,162,107,0.35);
+  }
+  .th-steps {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .th-step {
+    flex: 1 1 200px;
+    background: var(--th-branco);
+    border-top: 3px solid var(--th-ouro);
+    border-radius: 8px;
+    padding: 18px 16px;
+  }
+  .th-step-num {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    color: var(--th-ouro);
+    font-size: 20px;
+  }
+  .th-step-title { font-weight: 700; color: var(--th-azul); margin: 6px 0 4px; font-size: 14.5px; }
+  .th-step-desc { font-size: 12.5px; color: var(--th-tinta); line-height: 1.5; }
+  .th-connect {
+    background: var(--th-areia-escura);
+    text-align: center;
+  }
+  .th-connect .th-p {
+    max-width: 660px;
+    margin: 0 auto 14px;
+    font-size: clamp(14px, 2vw, 17px);
+  }
+  .th-cta {
+    text-align: center;
+    background: linear-gradient(160deg, var(--th-azul-fundo) 0%, var(--th-azul) 100%);
+    color: var(--th-areia);
+    padding: clamp(48px, 8vw, 84px) 24px;
+  }
+  .th-cta .th-h2 { color: var(--th-areia); }
+  .th-cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--th-areia);
+    text-decoration: none;
+    font-size: clamp(12.5px, 1.8vw, 15px);
+    border: 1px solid var(--th-ouro);
+    border-radius: 24px;
+    padding: 12px 32px;
+    transition: background 0.2s ease;
+  }
+  .th-cta-btn:hover { background: rgba(201,162,107,0.15); }
+  .th-signature {
+    margin-top: 22px;
+    font-size: 12px;
+    color: var(--th-ouro-claro);
+    letter-spacing: 0.06em;
   }
 </style>
 </head>
@@ -608,5 +757,143 @@
 </script>
 
 </div>
+
+<section class="th-section">
+
+  <div class="th-hero">
+    <div class="th-eyebrow">TERAPIA HOLÍSTICA</div>
+    <h1 class="th-h1">Tornar-se consciente é o primeiro passo para escolher diferente.</h1>
+    <p class="th-sub">Terapia Holística com técnicas de reprogramação emocional e recursos da ABA, para compreender seus padrões e construir novas formas de responder à vida.</p>
+  </div>
+
+  <div class="th-block">
+    <div class="th-inner">
+      <div class="th-kicker">APRESENTAÇÃO</div>
+      <h2 class="th-h2">Alane Lima</h2>
+      <p class="th-p">Sou Alane Lima, Psicanalista Clínica em Formação, com formação e experiência em Recursos Humanos e desenvolvimento de pessoas. Ao longo da minha trajetória, dediquei-me a compreender o que move o comportamento humano — dentro das organizações e, sobretudo, dentro de cada história individual.</p>
+      <p class="th-p">Essa vivência, somada à minha formação em Psicanálise, ampliou meu olhar sobre a subjetividade: sobre como cada pessoa constrói suas respostas emocionais, seus padrões de relação e sua forma particular de atravessar experiências. É esse olhar que sustenta o trabalho que ofereço hoje — um espaço de escuta real, sem fórmulas prontas.</p>
+    </div>
+  </div>
+
+  <div class="th-block th-dark">
+    <div class="th-inner">
+      <div class="th-kicker">O QUE É</div>
+      <h2 class="th-h2">A Terapia Holística</h2>
+      <p class="th-p">A Terapia Holística parte de um princípio simples, mas profundo: você não é feito de partes isoladas. Suas emoções, seus comportamentos, suas relações e sua história de vida estão entrelaçados — e é olhando para esse conjunto, e não para um sintoma isolado, que a mudança se torna possível.</p>
+      <p class="th-p">Neste processo, utilizo técnicas de reprogramação emocional e recursos da ABA (Análise do Comportamento Aplicada) como ferramentas de trabalho — não como rótulos do que fazemos juntos, mas como caminhos práticos para observar, compreender e transformar padrões.</p>
+      <p class="th-p">Não se trata de psicoterapia ou atendimento psicológico. É um processo de desenvolvimento humano, estruturado e comprometido, que caminha ao seu lado enquanto você se torna mais consciente de si.</p>
+    </div>
+  </div>
+
+  <div class="th-block">
+    <div class="th-inner">
+      <div class="th-kicker">REPROGRAMAÇÃO EMOCIONAL</div>
+      <h2 class="th-h2">O que significa reprogramar</h2>
+      <p class="th-p">Reprogramar não é apagar. É revisitar aquilo que já está construído dentro de você — emoções, respostas automáticas, formas de reagir — e abrir espaço para novas possibilidades.</p>
+      <p class="th-p">Na prática, esse processo ajuda você a:</p>
+      <ul class="th-list">
+        <li>Reconhecer padrões emocionais e comportamentais que se repetem</li>
+        <li>Compreender seus gatilhos e o que eles despertam em você</li>
+        <li>Perceber comportamentos que se repetem sem que você perceba</li>
+        <li>Ampliar a consciência sobre as escolhas que faz</li>
+        <li>Desenvolver novas formas de responder às situações da vida</li>
+        <li>Construir novas possibilidades de comportamento e de relacionamento</li>
+      </ul>
+      <p class="th-p" style="margin-top:16px;">Não prometo resultados garantidos, nem fórmulas mágicas. O que ofereço é um processo real, sustentado por presença, escuta e método — no seu tempo.</p>
+    </div>
+  </div>
+
+  <div class="th-block th-dark">
+    <div class="th-inner">
+      <div class="th-kicker">RECURSOS DA ABA</div>
+      <h2 class="th-h2">Como a ABA pode contribuir</h2>
+      <p class="th-p">A ABA (Análise do Comportamento Aplicada) é uma área que estuda como o comportamento humano se relaciona com o contexto em que vivemos — o que vem antes de uma reação, e o que vem depois dela, reforçando ou não aquele comportamento.</p>
+      <p class="th-p">De forma simples: ela ajuda a enxergar por que certos padrões se mantêm, mesmo quando você já percebe que gostaria de agir diferente.</p>
+      <p class="th-p">Utilizo princípios da ABA como recurso dentro do processo terapêutico holístico — para observar comportamentos com mais clareza, identificar o que os sustenta e construir, junto com você, novos caminhos de resposta. Não é um tratamento clínico isolado, mas uma ferramenta a mais dentro de um olhar integral sobre quem você é.</p>
+    </div>
+  </div>
+
+  <div class="th-block">
+    <div class="th-inner">
+      <div class="th-kicker">OLHAR INTEGRAL</div>
+      <h2 class="th-h2">Sobre o indivíduo</h2>
+      <p class="th-p">Cada pessoa que chega até esse processo carrega uma história única — experiências, vínculos, dores, aprendizados. Por isso, o trabalho aqui não se limita a um sintoma ou uma queixa pontual.</p>
+      <p class="th-p">Olho para você de forma integral: suas emoções, seus comportamentos, suas relações e a trajetória que te trouxe até aqui. É desse lugar que nascem transformações que realmente se sustentam — porque não ignoram nenhuma parte de quem você é.</p>
+    </div>
+  </div>
+
+  <div class="th-block th-dark">
+    <div class="th-inner">
+      <div class="th-kicker">PARA QUEM É</div>
+      <h2 class="th-h2">Este processo foi pensado para você que</h2>
+      <ul class="th-list">
+        <li>Percebe que repete os mesmos padrões emocionais ou comportamentais</li>
+        <li>Quer compreender melhor suas próprias reações</li>
+        <li>Deseja desenvolver mais autoconhecimento</li>
+        <li>Está vivendo mudanças ou momentos de transição</li>
+        <li>Sente necessidade de ressignificar experiências vividas</li>
+        <li>Já entende o que precisa mudar, mas tem dificuldade em transformar essa consciência em ação</li>
+        <li>Busca um processo de desenvolvimento pessoal acolhedor, sério e integral</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="th-block">
+    <div class="th-inner">
+      <div class="th-kicker">COMO FUNCIONA</div>
+      <h2 class="th-h2">O processo</h2>
+      <div class="th-steps">
+        <div class="th-step">
+          <div class="th-step-num">01</div>
+          <div class="th-step-title">Escuta e diagnóstico</div>
+          <div class="th-step-desc">Entendemos juntas o seu momento real, sem pressupor soluções prontas.</div>
+        </div>
+        <div class="th-step">
+          <div class="th-step-num">02</div>
+          <div class="th-step-title">Plano personalizado</div>
+          <div class="th-step-desc">A partir dessa escuta, construímos um caminho sob medida para você.</div>
+        </div>
+        <div class="th-step">
+          <div class="th-step-num">03</div>
+          <div class="th-step-title">Acompanhamento contínuo</div>
+          <div class="th-step-desc">Seguimos lado a lado até que as mudanças se sustentem na sua vida.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="th-block th-dark">
+    <div class="th-inner">
+      <div class="th-kicker">O QUE PODE SER TRABALHADO</div>
+      <ul class="th-list">
+        <li>Padrões emocionais que se repetem em diferentes áreas da vida</li>
+        <li>Dificuldades de lidar com determinadas situações ou relações</li>
+        <li>Comportamentos automáticos que você gostaria de compreender melhor</li>
+        <li>Processos de transição pessoal ou profissional</li>
+        <li>Ressignificação de experiências e histórias de vida</li>
+        <li>Construção de novas formas de se relacionar consigo e com os outros</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="th-block th-connect">
+    <div class="th-inner" style="text-align:center;">
+      <div class="th-kicker" style="color:var(--th-terracota);">UM MOMENTO PARA SE RECONHECER</div>
+      <p class="th-p">Talvez você já tenha percebido: existem situações que se repetem. Reações que voltam, mesmo quando você jura para si mesma que vai agir diferente da próxima vez. Uma sensação de já ter vivido aquilo antes — em outra relação, outro contexto, outra versão de você.</p>
+      <p class="th-p">Você entende, racionalmente, o que gostaria de mudar. Mas entre entender e efetivamente mudar, existe uma distância que só a consciência genuína consegue atravessar.</p>
+      <p class="th-p">Este processo existe para isso: para ajudar você a enxergar com clareza aquilo que se repete, compreender de onde vem, e construir — com tempo, cuidado e método — novas formas de responder à vida. Não para se tornar outra pessoa. Para se tornar mais você mesma, com mais liberdade de escolha.</p>
+    </div>
+  </div>
+
+  <div class="th-cta">
+    <div class="th-inner" style="padding-top:0; padding-bottom:0;">
+      <h2 class="th-h2">Se você reconhece essas repetições em você, este pode ser o momento de começar a olhar para elas de outro jeito.</h2>
+      <a class="th-cta-btn" href="https://www.linkedin.com/in/conecta-alanelima/?locale=pt" target="_blank" rel="noopener noreferrer">Agende uma conversa inicial</a>
+      <div class="th-signature">Alane Lima — Psicanalista Clínica em Formação · Terapia Holística</div>
+    </div>
+  </div>
+
+</section>
+
 </body>
 </html>
