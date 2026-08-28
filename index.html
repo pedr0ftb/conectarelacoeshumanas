@@ -49,7 +49,34 @@
     background: var(--th-areia);
     font-family: 'Segoe UI', Calibri, -apple-system, sans-serif;
     color: var(--th-tinta);
+    display: none;
   }
+  .th-section.th-open { display: block; }
+  .th-close-row { text-align: center; padding-top: 8px; }
+  .th-close-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid rgba(245,242,235,0.4);
+    color: var(--th-areia);
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    font-family: 'Segoe UI', Calibri, -apple-system, sans-serif;
+    transition: background 0.2s ease;
+  }
+  .th-close-btn:hover { background: rgba(245,242,235,0.12); }
+  .cvi-item-link {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: rgba(201,162,107,0.5);
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+  }
+  .cvi-item-link:hover { opacity: 0.75; }
   .th-inner {
     max-width: 880px;
     margin: 0 auto;
@@ -558,7 +585,7 @@
       <div class="cvi-eyebrow">PARA PESSOAS</div>
       <div class="cvi-headline">Escuta real, sem fórmulas prontas</div>
       <div class="cvi-list">
-        <div class="cvi-item">Terapia Holística — Reprogramação Emocional e recursos da ABA</div>
+        <div class="cvi-item cvi-item-link" id="th-toggle" role="button" tabindex="0">Terapia Holística — Reprogramação Emocional e recursos da ABA</div>
         <div class="cvi-item">Mentoria de Carreira</div>
       </div>
       <div class="cvi-caption-bar"><div class="cvi-caption-text" style="color:#2E2A24; opacity:0.6;">Frente pessoal — Alane Lima.</div></div>
@@ -761,12 +788,42 @@
 
 </div>
 
-<section class="th-section">
+<script>
+(function() {
+  var toggleBtn = document.getElementById('th-toggle');
+  var closeBtn = document.getElementById('th-close');
+  var section = document.getElementById('th-section');
+
+  function openSection() {
+    section.classList.add('th-open');
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeSection() {
+    section.classList.remove('th-open');
+    toggleBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  toggleBtn.addEventListener('click', openSection);
+  toggleBtn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openSection();
+    }
+  });
+  closeBtn.addEventListener('click', closeSection);
+})();
+</script>
+
+<section class="th-section" id="th-section">
 
   <div class="th-hero">
     <div class="th-eyebrow">TERAPIA HOLÍSTICA</div>
     <h1 class="th-h1">Tornar-se consciente é o primeiro passo para escolher diferente.</h1>
     <p class="th-sub">Terapia Holística com técnicas de reprogramação emocional e recursos da ABA, para compreender seus padrões e construir novas formas de responder à vida.</p>
+    <div class="th-close-row">
+      <button class="th-close-btn" id="th-close" type="button">✕ Fechar</button>
+    </div>
   </div>
 
   <div class="th-block">
