@@ -788,33 +788,6 @@
 
 </div>
 
-<script>
-(function() {
-  var toggleBtn = document.getElementById('th-toggle');
-  var closeBtn = document.getElementById('th-close');
-  var section = document.getElementById('th-section');
-
-  function openSection() {
-    section.classList.add('th-open');
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function closeSection() {
-    section.classList.remove('th-open');
-    toggleBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  toggleBtn.addEventListener('click', openSection);
-  toggleBtn.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      openSection();
-    }
-  });
-  closeBtn.addEventListener('click', closeSection);
-})();
-</script>
-
 <section class="th-section" id="th-section">
 
   <div class="th-hero">
@@ -954,6 +927,33 @@
   </div>
 
 </section>
+
+<script>
+(function() {
+  var toggleBtn = document.getElementById('th-toggle');
+  var closeBtn = document.getElementById('th-close');
+  var section = document.getElementById('th-section');
+
+  function openSection() {
+    section.classList.add('th-open');
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeSection() {
+    section.classList.remove('th-open');
+    toggleBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  toggleBtn.addEventListener('click', openSection);
+  toggleBtn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openSection();
+    }
+  });
+  closeBtn.addEventListener('click', closeSection);
+})();
+</script>
 
 </body>
 </html>
